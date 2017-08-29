@@ -74,10 +74,10 @@
             var currentValue = 0;
 
             $.ajax({
-              url: 'https://api.coindesk.com/v1/bpi/currentprice.json',
+              url: 'https://www.bitstamp.net/api/ticker/',
               dataType: 'json',
               success: function(data) {
-                  currentValue = btc * data.bpi.USD.rate_float;
+                  currentValue = btc * data.vwap;
                   $("#valueBefore").html("$"+initialValue);
                   $("#valueNow").html("$"+currentValue.toFixed(2));
                   $("#delta").html(((currentValue/initialValue) *100).toFixed(2) + "%");
