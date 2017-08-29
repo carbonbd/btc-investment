@@ -62,7 +62,7 @@
             </td>
         </tr>
     </table>
-
+    <p id="message"> </p>
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -80,11 +80,21 @@
                   currentValue = btc * data.vwap;
                   $("#valueBefore").html("$"+initialValue);
                   $("#valueNow").html("$"+currentValue.toFixed(2));
-                  $("#delta").html(((currentValue/initialValue) *100 -100).toFixed(2) + "%");
-                  if(currentValue/initialValue < 1){
+                  var diff = currentValue/initialValue;
+                  $("#delta").html((diff *100 -100).toFixed(2) + "%");
+                  if(diff < 1){
                       $("#delta").css('color', 'red');
                   } else{
                       $("#delta").css('color', 'green');
+                      if(diff < 1.1){
+                          $("#message").html("Woo!");
+                      } else if(diff <1.25){
+                          $("#message").html("Oh Boy! You made a buttload of cash!");
+                      }else if(diff <2){
+                          $("#message").html("Shit yes!");
+                      }else{
+                          $("#message").html("🤑🤑🤑");
+                      }
                   }
                   console.log(data);
               }
