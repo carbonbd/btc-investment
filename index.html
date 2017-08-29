@@ -80,7 +80,7 @@
                   currentValue = btc * data.vwap;
                   $("#valueBefore").html("$"+initialValue);
                   $("#valueNow").html("$"+currentValue.toFixed(2));
-                  $("#delta").html(((currentValue/initialValue) *100).toFixed(2) + "%");
+                  $("#delta").html(((currentValue/initialValue) *100 -100).toFixed(2) + "%");
                   if(currentValue/initialValue < 1){
                       $("#delta").css('color', 'red');
                   } else{
