@@ -85,7 +85,7 @@
               url: 'https://www.bitstamp.net/api/ticker/',
               dataType: 'json',
               success: function(data) {
-                  currentValue = btc * data.vwap;
+                  currentValue = btc * data.last;
                   $("#valueBefore").html("$"+initialValue);
                   $("#valueNow").html("$"+currentValue.toFixed(2));
                   if(currentValue>initialValue){
