@@ -53,9 +53,9 @@
                 <span id="valueNow"></span>
             </td>
         </tr>
-        <tr>
+        <tr id="profit">
             <td class="title">
-                Purchased: 
+                Profit: 
             </td>
             <td class="number">
                 <span id="profit"></span>
@@ -88,7 +88,11 @@
                   currentValue = btc * data.vwap;
                   $("#valueBefore").html("$"+initialValue);
                   $("#valueNow").html("$"+currentValue.toFixed(2));
-                  $("#profit").html("$"+(currentValue-initialValue).toFixed(2));
+                  if(currentValue>initialValue){
+                      $("#profit").html("$"+(currentValue-initialValue).toFixed(2));
+                  } else {
+                      $("#profit").hide();
+                  }
                   var diff = currentValue/initialValue;
                   $("#delta").html((diff *100 -100).toFixed(2) + "%");
                   if(diff < 1){
