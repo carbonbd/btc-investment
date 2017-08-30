@@ -53,7 +53,7 @@
                 <span id="valueNow"></span>
             </td>
         </tr>
-        <tr id="profit">
+        <tr id="profitDiv">
             <td class="title">
                 Profit: 
             </td>
@@ -91,7 +91,7 @@
                   if(currentValue>initialValue){
                       $("#profit").html("$"+(currentValue-initialValue).toFixed(2));
                   } else {
-                      $("#profit").hide();
+                      $("#profitDiv").hide();
                   }
                   var diff = currentValue/initialValue;
                   $("#delta").html((diff *100 -100).toFixed(2) + "%");
