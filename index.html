@@ -7,6 +7,7 @@
               margin: auto;
               text-align: center;
               font-size: 200%;
+             color:white;
         }
         h2{
               margin-top:1em;   
@@ -96,9 +97,11 @@
                   var diff = currentValue/initialValue;
                   $("#delta").html((diff *100 -100).toFixed(2) + "%");
                   if(diff < 1){
-                      $("#delta").css('color', 'red');
+//                       $("#delta").css('color', 'red');
+                      $("body").css('background-color','red');
                   } else{
-                      $("#delta").css('color', 'green');
+//                       $("#delta").css('color', 'green');
+                      $("body").css('background-color','green');
                       if(diff < 1.1){
                           $("#message").html("Woo!");
                       } else if(diff <1.25){
