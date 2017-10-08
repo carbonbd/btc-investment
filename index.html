@@ -30,6 +30,18 @@
             font-size: 300%;
             vertical-align:bottom;
         }
+         .submit {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            text-decoration: none;
+        }   
         </style>
 </head>
 <body> 
@@ -72,49 +84,53 @@
         </tr>
     </table>
     <p id="message"> </p>
+    
+    <a class="submit" onclick="refresh()">Refresh</a>
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
   
         <script>
-            var btc = 1.00580277 + 0.78887898;
-            var initialValue = 4456.35 + 3459.40;
-            var currentValue = 0;
+            function refresh() {
+                var btc = 1.00580277 + 0.78887898;
+                var initialValue = 4456.35 + 3459.40;
+                var currentValue = 0;
 
-            $.ajax({
-              url: 'https://www.bitstamp.net/api/ticker/',
-              dataType: 'json',
-              success: function(data) {
-                  currentValue = btc * data.last;
-                  $("#valueBefore").html("$"+initialValue);
-                  $("#valueNow").html("$"+currentValue.toFixed(2));
-                  if(currentValue>initialValue){
-                      $("#profit").html("$"+(currentValue-initialValue).toFixed(2));
-                  } else {
-                      $("#profitDiv").hide();
-                  }
-                  var diff = currentValue/initialValue;
-                  $("#delta").html((diff *100 -100).toFixed(2) + "%");
-                  if(diff < 1){
-//                       $("#delta").css('color', 'red');
-                      $("body").css('background-color','#FF715B');
-                  } else{
-//                       $("#delta").css('color', 'green');
-                      $("body").css('background-color','#8FC93A');
-                      if(diff < 1.1){
-                          $("#message").html("Woo!");
-                      } else if(diff <1.25){
-                          $("#message").html("Oh Boy! You made a buttload of cash!");
-                      }else if(diff <2){
-                          $("#message").html("Shit yes!");
-                      }else{
-                          $("#message").html("🤑🤑🤑");
+                $.ajax({
+                  url: 'https://www.bitstamp.net/api/ticker/',
+                  dataType: 'json',
+                  success: function(data) {
+                      currentValue = btc * data.last;
+                      $("#valueBefore").html("$"+initialValue);
+                      $("#valueNow").html("$"+currentValue.toFixed(2));
+                      if(currentValue>initialValue){
+                          $("#profit").html("$"+(currentValue-initialValue).toFixed(2));
+                      } else {
+                          $("#profitDiv").hide();
                       }
+                      var diff = currentValue/initialValue;
+                      $("#delta").html((diff *100 -100).toFixed(2) + "%");
+                      if(diff < 1){
+    //                       $("#delta").css('color', 'red');
+                          $("body").css('background-color','#FF715B');
+                      } else{
+    //                       $("#delta").css('color', 'green');
+                          $("body").css('background-color','#8FC93A');
+                          if(diff < 1.1){
+                              $("#message").html("Woo!");
+                          } else if(diff <1.25){
+                              $("#message").html("Oh Boy! You made a buttload of cash!");
+                          }else if(diff <2){
+                              $("#message").html("Shit yes!");
+                          }else{
+                              $("#message").html("🤑🤑🤑");
+                          }
+                      }
+                      console.log(data);
                   }
-                  console.log(data);
-              }
-            });
+                });
+            }
         </script>
 
 </body>
