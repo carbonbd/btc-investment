@@ -109,6 +109,9 @@
                 $.ajax({
                   url: 'https://www.bitstamp.net/api/ticker/',
                   dataType: 'json',
+                    beforeSend: function(request) {
+                        request.setRequestHeader("Cache-Control", "max-age=0");
+                      },
                   success: function(data) {
                       $("#loading").hide();
                       currentValue = btc * data.last;
