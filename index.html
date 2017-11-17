@@ -1,6 +1,7 @@
 <html>
 <head>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
      <style>
          body{
               font-family: Open Sans;
@@ -9,6 +10,9 @@
               font-size: 200%;
              color:white;
         }
+         i{
+             color:black;
+         }
         h2{
               margin-top:1em;   
               margin-bottom:1em;
@@ -48,6 +52,11 @@
     <h2>
         Was it worth it?
     </h2>
+    
+    <div id="loading">
+        <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+        <span class="sr-only">Loading...</span>
+    </div>
 
     <table>
         <tr>
@@ -101,6 +110,7 @@
                   url: 'https://www.bitstamp.net/api/ticker/',
                   dataType: 'json',
                   success: function(data) {
+                      $("#loading").hide();
                       currentValue = btc * data.last;
                       $("#valueBefore").html("$"+initialValue);
                       $("#valueNow").html("$"+currentValue.toFixed(2));
@@ -132,6 +142,7 @@
                 });
             }
             refresh();
+            $("#loading").show();
         </script>
 
 </body>
