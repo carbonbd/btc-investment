@@ -50,10 +50,7 @@
 </head>
 <body>
     
-    <div id="loading">
-        <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
-        <span class="sr-only">Loading...</span>
-    </div>
+   
 
     <table>
 <!--         <tr>
@@ -89,9 +86,12 @@
             </td>
         </tr> -->
     </table>
-    <p id="message"> </p>
-    
-    <a class="submit" onclick="refresh()">Refresh</a>
+<!--     <p id="message"> </p> -->
+     <div id="loading">
+        <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+        <span class="sr-only">Loading...</span>
+    </div>
+    <a id="submitButton" class="submit" onclick="refresh()">Refresh</a>
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -99,6 +99,7 @@
   
         <script>
             function refresh() {
+                $("#submitButton").hide();
                 $("#loading").show();
                 var btc = 0.5;
 //                 var initialValue = 4456.35 + 3459.40;
@@ -112,6 +113,7 @@
                       },
                   success: function(data) {
                       $("#loading").hide();
+                      $("#submitButton").show();
                       currentValue = btc * data.last;
 //                       $("#valueBefore").html("$"+initialValue);
                       $("#valueNow").html("$"+currentValue.toFixed(2));
