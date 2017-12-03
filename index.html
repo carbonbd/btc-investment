@@ -59,38 +59,38 @@
     </div>
 
     <table>
-        <tr>
+<!--         <tr>
             <td class="title">
                 Purchased: 
             </td>
             <td class="number">
                 <span id="valueBefore"></span>
             </td>
-        </tr>
+        </tr> -->
         <tr>
             <td class="title">
-                Value Now: 
+                Value : 
             </td>
             <td class="number">
                 <span id="valueNow"></span>
             </td>
         </tr>
-        <tr id="profitDiv">
+<!--         <tr id="profitDiv">
             <td class="title">
                 Profit: 
             </td>
             <td class="number">
                 <span id="profit"></span>
             </td>
-        </tr>
-        <tr>
+        </tr> -->
+<!--         <tr>
             <td class="title">
                 Diff: 
             </td>
             <td class="number">
                 <span id="delta"></span>
             </td>
-        </tr>
+        </tr> -->
     </table>
     <p id="message"> </p>
     
@@ -103,8 +103,8 @@
         <script>
             function refresh() {
                 $("#loading").show();
-                var btc = 1.00580277 + 0.78887898;
-                var initialValue = 4456.35 + 3459.40;
+                var btc = 0.5;
+//                 var initialValue = 4456.35 + 3459.40;
                 var currentValue = 0;
 
                 $.ajax({
@@ -116,31 +116,31 @@
                   success: function(data) {
                       $("#loading").hide();
                       currentValue = btc * data.last;
-                      $("#valueBefore").html("$"+initialValue);
+//                       $("#valueBefore").html("$"+initialValue);
                       $("#valueNow").html("$"+currentValue.toFixed(2));
-                      if(currentValue>initialValue){
-                          $("#profit").html("$"+(currentValue-initialValue).toFixed(2));
-                      } else {
-                          $("#profitDiv").hide();
-                      }
-                      var diff = currentValue/initialValue;
-                      $("#delta").html((diff *100 -100).toFixed(2) + "%");
-                      if(diff < 1){
-    //                       $("#delta").css('color', 'red');
-                          $("body").css('background-color','#FF715B');
-                      } else{
-    //                       $("#delta").css('color', 'green');
-                          $("body").css('background-color','#8FC93A');
-                          if(diff < 1.1){
-                              $("#message").html("Woo!");
-                          } else if(diff <1.25){
-                              $("#message").html("Oh Boy! You made a buttload of cash!");
-                          }else if(diff <2){
-                              $("#message").html("Shit yes!");
-                          }else{
-                              $("#message").html("🤑🤑🤑");
-                          }
-                      }
+//                       if(currentValue>initialValue){
+//                           $("#profit").html("$"+(currentValue-initialValue).toFixed(2));
+//                       } else {
+//                           $("#profitDiv").hide();
+//                       }
+//                       var diff = currentValue/initialValue;
+//                       $("#delta").html((diff *100 -100).toFixed(2) + "%");
+//                       if(diff < 1){
+//     //                       $("#delta").css('color', 'red');
+//                           $("body").css('background-color','#FF715B');
+//                       } else{
+//     //                       $("#delta").css('color', 'green');
+//                           $("body").css('background-color','#8FC93A');
+//                           if(diff < 1.1){
+//                               $("#message").html("Woo!");
+//                           } else if(diff <1.25){
+//                               $("#message").html("Oh Boy! You made a buttload of cash!");
+//                           }else if(diff <2){
+//                               $("#message").html("Shit yes!");
+//                           }else{
+//                               $("#message").html("🤑🤑🤑");
+//                           }
+//                       }
                       console.log(data);
                   }
                 });
